@@ -11,6 +11,15 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "copyPlainText" || request.action === "copyMarkdown") {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const format = request.action === "copyPlainText" ? "plain" : "markdown";
+      copyPageInfo(tabs[0], format);
+    });
+  }
+});
+
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "copyPlainText") {
     copyPageInfo(tab, "plain");
@@ -31,6 +40,7 @@ function copyPageInfo(tab, format) {
       } else if (format === "markdown") {
         textCopy = `[${title}](${url})`;
       }
+
 
       navigator.clipboard
         .writeText(textCopy)
