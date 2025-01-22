@@ -4,13 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/popup.css">
-  <title>link-copy</title>
+  <title>Link Copy</title>
 </head>
-
 <body>
-  <h1>link-copy</h1>
-  <button id="copyPlainText">Plain Textでコピー</button>
-  <button id="copyMarkdown">Markdownでコピー</button>
+  <div class="container">
+    <div class="header">
+      <h1>Link Copy</h1>
+      <p class="subtitle">Copy page info in your preferred format</p>
+    </div>
+    <div class="button-container">
+      <button id="copyPlainText" class="btn btn-primary">
+        <span class="btn-icon">📋</span>
+        Copy as Plain Text
+      </button>
+      <button id="copyMarkdown" class="btn btn-secondary">
+        <span class="btn-icon">📝</span>
+        Copy as Markdown
+      </button>
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
